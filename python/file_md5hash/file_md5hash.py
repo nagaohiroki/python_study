@@ -1,6 +1,8 @@
-# coding: utf-8
+﻿# coding: utf-8
 import hashlib
 import sys
+
+
 def md5(filename):
     '''
     md5変換
@@ -8,6 +10,7 @@ def md5(filename):
     with open(filename, "rb") as f:
         data = f.read()
         return hashlib.md5(data).hexdigest()
+
 
 def main():
     '''
