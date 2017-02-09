@@ -52,6 +52,7 @@ func printFileInfo(filePath string) {
 		return
 	}
 	fileName := path.Base(filepath.ToSlash(filePath))
+	fmt.Printf("------------------\n")
 	fmt.Printf("fileName: %v\n", fileName)
 	fmt.Printf("md5hash: %x\n", md5)
 	fmt.Printf("size: %v byte\n", size)
@@ -62,6 +63,13 @@ func main() {
 		if i == 0 {
 			continue
 		}
-		printFileInfo(p)
+		filePaths, globErr := filepath.Glob(p)
+		if globErr != nil {
+			fmt.Println(globErr)
+			continue
+		}
+		for _, f := range filePaths {
+			printFileInfo(f)
+		}
 	}
 }
