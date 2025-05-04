@@ -1,0 +1,19 @@
+[project]
+name = "stream"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = ["yt-dlp"]
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+reportMissingTypeStubs = false
+reportUnknownMemberType = false
+reportUnknownVariableType = false
+reportUnknownArgumentType = false
+
+[dependency-groups]
+dev = [
+    "debugpy",
+]
