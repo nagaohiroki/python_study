@@ -8,10 +8,10 @@ dependencies = ["yt-dlp"]
 [tool.pyright]
 venvPath = "."
 venv = ".venv"
-reportMissingTypeStubs = false
-reportUnknownMemberType = false
-reportUnknownVariableType = false
-reportUnknownArgumentType = false
+# reportMissingTypeStubs = false
+# reportUnknownMemberType = false
+# reportUnknownVariableType = false
+# reportUnknownArgumentType = false
 
 [dependency-groups]
 dev = [
