@@ -1,11 +1,13 @@
 ﻿import typing
 import yt_dlp
 
+
 class Entry(typing.TypedDict, total=False):
     url: str
     title: str
     duration: list[int] | None
     filesize: list[int] | None
+
 
 def search_urls(search_word: str) -> list[tuple[str, str, int | None]]:
     ydl_opts = {
@@ -23,7 +25,7 @@ def search_urls(search_word: str) -> list[tuple[str, str, int | None]]:
                     (
                         entry.get("url", ""),
                         entry.get("title", ""),
-                        int(entry.get("duration")) if entry.get("duration") else None,
+                        entry.get("duration"),
                     )
                     for entry in entries
                     if isinstance(entry, dict)
@@ -46,7 +48,11 @@ def main():
 
     print("Found videos:")
     for i, (url, title, duration) in enumerate(urls, start=1):
-        duration_str = f"{duration // 3600}:{duration // 60}:{duration % 60}" if duration else "Unknown duration"
+        duration_str = (
+            f"{duration // 3600}:{duration // 60}:{duration % 60}"
+            if duration
+            else "Unknown duration"
+        )
         print(f"{i}: {title} ({url}) - {duration_str}")
 
     choice = int(input("Enter the number of the video to download: "))
