@@ -44,15 +44,11 @@ def download_list_file(url_file: pathlib.Path, output_dir: pathlib.Path):
             print("download " + url)
 
 
-def main():
+def main() -> None:
     if not static_ffmpeg.add_paths():  # pyright: ignore[reportUnknownMemberType]
         print("ffmpeg not found")
         return
-    current_dir = pathlib.Path(__file__).parent
-    dir_path = current_dir / pathlib.Path("videos")
+    current_dir = pathlib.Path(__file__).parent.parent.parent
+    dir_path = current_dir / "videos"
     url_file = current_dir / "urls.txt"
     download_list_file(url_file, dir_path)
-
-
-if __name__ == "__main__":
-    main()
